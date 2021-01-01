@@ -14,10 +14,10 @@ public class JSContext {
         return JSContextGetGlobalObject(context)!
     }
 
-    public init() {
+    public init?() {
         guard let group = JSContextGroupCreate(),
             let context = JSGlobalContextCreateInGroup(group, nil) else {
-                fatalError("can't create context")
+                return nil
         }
 
         self.group = group
